@@ -2,21 +2,76 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>地雷放映室 · 视频课程</title>
+<title>土豆地雷放映室 · 视频课程</title>
 <style>
 :root{color-scheme:dark;--bg:#0b101a;--panel:#141c2a;--edge:#2a3547;--ink:#edf3ff;--muted:#9aaac2;--accent:#f7c55d;--blue:#70b6ff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -20%,#273a54 0,transparent 55%),var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Microsoft YaHei',sans-serif}header{max-width:1200px;margin:auto;padding:28px 20px 14px;display:flex;align-items:center;gap:16px}.mine{width:58px;height:58px;flex:none;filter:drop-shadow(0 6px 16px #f7c55d40)}h1{font-size:clamp(23px,4vw,34px);margin:0;font-weight:850;letter-spacing:1px}header p{color:var(--muted);margin:5px 0 0;font-size:13px}.shell{max-width:1200px;margin:auto;padding:12px 20px 55px}.toolbar{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0 22px}.toolbar input,.toolbar select{background:#172235;color:var(--ink);border:1px solid var(--edge);border-radius:12px;padding:13px 14px;font:inherit;outline:none}.toolbar input{flex:1;min-width:190px}.toolbar select{min-width:140px}.toolbar input:focus,.toolbar select:focus{border-color:var(--accent)}.count{color:var(--muted);font-size:13px;margin-bottom:15px}.layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:22px}.viewer{min-width:0}.screen{aspect-ratio:16/9;background:#05070b;border:1px solid var(--edge);border-radius:18px;overflow:hidden;display:grid;place-items:center;position:relative}.screen video{width:100%;height:100%;display:block;background:#05070b}.empty{position:absolute;text-align:center;padding:25px;color:var(--muted)}.empty .big{font-size:54px;margin-bottom:8px}.playing-title{font-size:19px;font-weight:700;margin:18px 0 7px;overflow-wrap:anywhere}.playing-meta{font-size:13px;color:var(--muted)}.list{display:grid;gap:10px;max-height:calc(100vh - 245px);overflow:auto;padding-right:4px}.item{width:100%;background:var(--panel);border:1px solid var(--edge);border-radius:14px;display:flex;align-items:center;gap:12px;text-align:left;color:var(--ink);padding:10px;cursor:pointer;transition:transform .15s,border-color .15s}.item:hover{transform:translateY(-1px);border-color:#7486a4}.item.active{border-color:var(--accent);background:#222635}.thumb{width:102px;aspect-ratio:16/10;object-fit:cover;background:#273247;border-radius:9px;flex:none}.item-text{min-width:0;flex:1}.item-title{font-size:14px;font-weight:650;line-height:1.45;overflow-wrap:anywhere}.item-sub{font-size:12px;color:var(--muted);margin-top:7px}.track{height:3px;background:#394252;border-radius:8px;margin-top:9px;overflow:hidden}.track span{height:100%;background:var(--accent);display:block}.section-title{display:flex;align-items:center;gap:8px;font-weight:750;font-size:16px;margin:0 0 13px}.dot{color:var(--accent)}.message{padding:20px;background:var(--panel);border:1px solid var(--edge);border-radius:12px;color:var(--muted);line-height:1.8}.foot{color:var(--muted);font-size:12px;margin-top:30px;text-align:center}.reload{background:var(--accent);color:#171b24;border:0;border-radius:9px;padding:8px 12px;font-weight:700;cursor:pointer;margin-left:10px}@media(max-width:800px){header{padding-top:18px}.layout{grid-template-columns:1fr}.list{max-height:none}.mine{width:49px;height:49px}.toolbar{margin-top:7px}.screen{border-radius:12px}}@media(min-width:801px){.viewer{position:sticky;top:18px;align-self:start}}
+
+/* 土豆地雷主题与手机端布局优化 */
+:root{--bg:#0d1316;--panel:#172126;--edge:#34433e;--ink:#fff5e5;--muted:#b9c7bc;--accent:#f7c66e;--blue:#9bd5bf}
+body{background:radial-gradient(ellipse at 8% 0%,#273e33 0,transparent 48%),radial-gradient(ellipse at 90% 12%,#3a3026 0,transparent 42%),var(--bg)}
+header{padding-top:24px;padding-bottom:8px}
+header .mine{width:65px;height:65px;filter:drop-shadow(0 6px 15px #e9a84e45)}
+header h1{font-size:clamp(23px,3vw,32px)}
+.shell{padding-top:8px}
+.toolbar{gap:10px;margin:12px 0 16px}
+.toolbar input,.toolbar select{background:#1c2b2c;border-color:#3b5048;min-height:46px}
+.toolbar input:focus,.toolbar select:focus{box-shadow:0 0 0 3px #f7c66e25}
+.screen{border:1px solid #3a5148;box-shadow:0 14px 36px #0005}
+.screen video{object-fit:contain}
+.item{border-color:#34483f}
+.item.active{border-color:#f7c66e;box-shadow:inset 3px 0 #f7c66e}
+.item:focus-visible,.reload:focus-visible{outline:3px solid #f7c66e;outline-offset:2px}
+.playing-title{margin-top:12px}
+.section-title{color:#f7dfac}
+@media(max-width:800px){
+  header{padding:14px 15px 5px;gap:10px}
+  header .mine{width:48px;height:48px}
+  header h1{font-size:22px;letter-spacing:0}
+  header p{font-size:11px;margin-top:2px}
+  .shell{padding:5px 12px 32px}
+  .toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin:10px 0 9px}
+  .toolbar input{grid-column:1/-1;min-width:0}
+  .toolbar select{min-width:0;width:100%;font-size:13px;padding:10px 8px}
+  .toolbar input,.toolbar select{min-height:42px;border-radius:10px}
+  .count{margin-bottom:10px;font-size:12px}
+  .layout{display:flex;flex-direction:column;gap:18px}
+  .viewer{width:100%}
+  .screen{width:100%;aspect-ratio:16/9;max-height:min(55vh,440px);border-radius:12px}
+  .screen video{object-fit:contain}
+  .empty .big{font-size:36px}
+  .empty{padding:12px;font-size:13px}
+  .playing-title{font-size:16px;margin:10px 0 4px}
+  .playing-meta{font-size:12px}
+  .list{max-height:none;overflow:visible;gap:8px;padding:0}
+  .item{padding:8px;border-radius:11px;gap:10px}
+  .thumb{width:84px;aspect-ratio:16/10;border-radius:7px}
+  .item-title{font-size:13px}
+  .item-sub{font-size:11px;margin-top:4px}
+  .track{margin-top:6px}
+  .section-title{margin-bottom:9px}
+  .foot{margin-top:24px}
+}
+@media(max-width:380px){
+  header h1{font-size:19px}
+  .thumb{width:72px}
+  .toolbar select{font-size:12px}
+}
+@media(min-width:801px){
+  .layout{grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr)}
+  .list{max-height:calc(100vh - 240px)}
+}
 </style>
 </head>
 <body>
 <header>
-<svg class="mine" viewBox="0 0 100 100" role="img" aria-label="地雷标志" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#f7c55d" stroke-width="8" stroke-linecap="round"><path d="M50 4v14M50 82v14M4 50h14M82 50h14M18 18l11 11M71 71l11 11M82 18L71 29M29 71L18 82"/></g><circle cx="50" cy="50" r="31" fill="#28394b" stroke="#f7c55d" stroke-width="5"/><circle cx="50" cy="50" r="20" fill="#f7c55d"/><path d="M44 36l-6 18h11l-4 13 18-22H52l6-9" fill="#222a37"/></svg>
-<div><h1>地雷放映室 <span style="color:var(--accent)">✦</span></h1><p>埋下知识，点亮每一课 · 课程视频库</p></div>
+<svg class="mine" viewBox="0 0 120 120" role="img" aria-label="可爱土豆地雷" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="potato" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#e8b878"/><stop offset="1" stop-color="#a9683f"/></linearGradient></defs><path d="M60 19V8M27 32l-9-9M95 32l9-9M12 64H4M116 64h-8" stroke="#f5cc72" stroke-width="7" stroke-linecap="round"/><path d="M48 23c-8-9-4-18 7-19 10-1 14 6 12 18" fill="#648c55" stroke="#304d35" stroke-width="3"/><path d="M32 36C15 46 13 80 33 98c17 15 54 13 69-8 14-20 6-49-14-59-19-10-43-5-56 5Z" fill="url(#potato)" stroke="#74472d" stroke-width="4"/><ellipse cx="45" cy="63" rx="5" ry="7" fill="#302820"/><ellipse cx="79" cy="63" rx="5" ry="7" fill="#302820"/><path d="M53 80q10 10 21-1" fill="none" stroke="#553324" stroke-width="4" stroke-linecap="round"/><ellipse cx="32" cy="76" rx="7" ry="4" fill="#e98973" opacity=".65"/><ellipse cx="91" cy="75" rx="7" ry="4" fill="#e98973" opacity=".65"/><g fill="#88583a" opacity=".65"><circle cx="42" cy="44" r="2.5"/><circle cx="85" cy="44" r="3"/><circle cx="64" cy="95" r="2.5"/></g><path d="M54 23h17" stroke="#304d35" stroke-width="5" stroke-linecap="round"/></svg>
+<div><h1>土豆地雷放映室 <span style="color:var(--accent)">✦</span></h1><p>🥔 埋下知识，收获每一课 · 课程视频库</p></div>
 </header>
 <main class="shell">
 <div class="toolbar"><input id="search" type="search" placeholder="搜索课程名称、编号…" aria-label="搜索课程"><select id="category" aria-label="课程分类"><option value="all">全部课程</option></select><select id="order" aria-label="排序方式"><option value="asc">编号从小到大</option><option value="desc">编号从大到小</option><option value="new">最近上传</option></select></div>
 <div id="count" class="count">正在读取视频列表…</div>
-<div class="layout"><section class="viewer"><div class="screen"><video id="player" controls playsinline preload="metadata" style="display:none"></video><div id="empty" class="empty"><div class="big">💣</div><div>选择右侧课程，开始观看</div></div></div><div id="nowTitle" class="playing-title">尚未选择课程</div><div id="nowMeta" class="playing-meta">支持倍速播放、全屏及本机进度记忆</div></section><section><div class="section-title"><span class="dot">✦</span> 课程清单</div><div id="list" class="list"><div class="message">正在加载…</div></div></section></div>
-<div class="foot">💣 地雷放映室 · 仅供受邀观看者使用 · 播放进度保存在当前设备</div>
+<div class="layout"><section class="viewer"><div class="screen"><video id="player" controls playsinline preload="metadata" style="display:none"></video><div id="empty" class="empty"><div class="big">🥔💥</div><div>从下方课程清单选择一节，开始观看</div></div></div><div id="nowTitle" class="playing-title">尚未选择课程</div><div id="nowMeta" class="playing-meta">支持倍速播放、全屏及本机进度记忆</div></section><section><div class="section-title"><span class="dot">✦</span> 课程清单</div><div id="list" class="list"><div class="message">正在加载…</div></div></section></div>
+<div class="foot">🥔 土豆地雷放映室 · 仅供受邀观看者使用 · 播放进度保存在当前设备</div>
 </main>
 <script>
 'use strict';
@@ -32,7 +87,7 @@ function getProgress(id){try{return JSON.parse(localStorage.getItem(storageKey(i
 function saveProgress(){if(!selectedId||!Number.isFinite(player.currentTime))return;try{localStorage.setItem(storageKey(selectedId),JSON.stringify({time:player.currentTime,duration:player.duration||0}))}catch{}}
 function categoryOf(name){const n=String(name||'').replace(/^\s*\d+\s*[.、．_\-：:]?\s*/,'');if(/史纲|史论|近代史/.test(n))return '史纲';if(/新思想|习思想/.test(n))return '新思想';if(/毛中特|毛概/.test(n))return '毛中特';if(/马原|马克思主义基本原理/.test(n))return '马原';if(/思修|道法|思想道德/.test(n))return '思修法基';return '其他课程'}
 function filtered(){const q=$('search').value.trim().toLowerCase(),cat=$('category').value,order=$('order').value;return allVideos.filter(v=>(cat==='all'||categoryOf(v.name)===cat)&&v.name.toLowerCase().includes(q)).sort((a,b)=>order==='new'?String(b.createTime).localeCompare(String(a.createTime)):order==='desc'?(numberOf(b.name)-numberOf(a.name)||b.name.localeCompare(a.name,'zh-CN',{numeric:true})):(numberOf(a.name)-numberOf(b.name)||a.name.localeCompare(b.name,'zh-CN',{numeric:true})))}
-function render(){const arr=filtered();$('count').textContent=`共 ${allVideos.length} 节课程 · 当前显示 ${arr.length} 节`;list.replaceChildren();if(!arr.length){const m=document.createElement('div');m.className='message';m.textContent='没有找到符合条件的课程';list.append(m);return}for(const v of arr){const b=document.createElement('button');b.type='button';b.className='item'+(v.fileId===selectedId?' active':'');const img=document.createElement('img');img.className='thumb';img.alt='';img.loading='lazy';if(v.cover)img.src=v.cover;const content=document.createElement('div');content.className='item-text';const title=document.createElement('div');title.className='item-title';title.textContent=v.name;const sub=document.createElement('div');sub.className='item-sub';sub.textContent=`💣 ${categoryOf(v.name)} · ${duration(v.duration)}`;const track=document.createElement('div');track.className='track';const bar=document.createElement('span');const p=getProgress(v.fileId);bar.style.width=(p.duration?Math.min(100,100*(p.time||0)/p.duration):0)+'%';track.append(bar);content.append(title,sub,track);b.append(img,content);b.addEventListener('click',()=>playVideo(v));list.append(b)}}
+function render(){const arr=filtered();$('count').textContent=`共 ${allVideos.length} 节课程 · 当前显示 ${arr.length} 节`;list.replaceChildren();if(!arr.length){const m=document.createElement('div');m.className='message';m.textContent='没有找到符合条件的课程';list.append(m);return}for(const v of arr){const b=document.createElement('button');b.type='button';b.className='item'+(v.fileId===selectedId?' active':'');const img=document.createElement('img');img.className='thumb';img.alt='';img.loading='lazy';if(v.cover)img.src=v.cover;const content=document.createElement('div');content.className='item-text';const title=document.createElement('div');title.className='item-title';title.textContent=v.name;const sub=document.createElement('div');sub.className='item-sub';sub.textContent=`🥔 ${categoryOf(v.name)} · ${duration(v.duration)}`;const track=document.createElement('div');track.className='track';const bar=document.createElement('span');const p=getProgress(v.fileId);bar.style.width=(p.duration?Math.min(100,100*(p.time||0)/p.duration):0)+'%';track.append(bar);content.append(title,sub,track);b.append(img,content);b.addEventListener('click',()=>playVideo(v));list.append(b)}}
 function playVideo(v){if(!v.url){alert('该视频暂时没有可用的播放地址');return}saveProgress();selectedId=v.fileId;player.pause();player.src=v.url;player.style.display='block';$('empty').style.display='none';$('nowTitle').textContent=v.name;$('nowMeta').textContent=`${categoryOf(v.name)} · ${duration(v.duration)} · 自动记录观看进度`;const saved=getProgress(v.fileId);player.onloadedmetadata=()=>{if(saved.time>5&&saved.time<player.duration-5){try{player.currentTime=saved.time}catch{}}};player.play().catch(()=>{});render()}
 player.addEventListener('timeupdate',()=>{if(Date.now()-saveTick>3000){saveTick=Date.now();saveProgress()}});player.addEventListener('pause',saveProgress);player.addEventListener('ended',saveProgress);window.addEventListener('pagehide',saveProgress);
 for(const id of ['search','category','order'])$(id).addEventListener(id==='search'?'input':'change',render);
