@@ -75,6 +75,7 @@ header h1{font-size:clamp(23px,3vw,32px)}
 .list .doc-folder{margin:0}.list .doc-folder-count{white-space:nowrap}.list{align-content:start}#videoBreadcrumb{margin:0 0 8px}#videoBreadcrumb span{padding:6px;color:var(--muted)}
 
 /* 樱桃炸弹主题 + 移动端快捷操作 */
+.cherry-bomb img{width:100%;height:100%;object-fit:contain;display:block;border-radius:16px;mix-blend-mode:multiply}.cherry-bomb{overflow:visible}
 header{position:relative}.cherry-bomb{margin-left:auto;flex:none;width:76px;height:76px;display:grid;place-items:center;position:relative;font-size:49px;cursor:pointer;filter:drop-shadow(0 5px 9px #d24a4a55);transition:transform .2s}.cherry-bomb:hover{transform:rotate(-9deg) scale(1.08)}.cherry-bomb span{position:absolute;right:-4px;bottom:2px;color:#fff0bd;font-size:9px;font-weight:900;transform:rotate(-12deg);text-shadow:1px 2px #9b2424}.quick-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 15px}.quick-actions button{border:1px solid #52664e;background:#22372e;color:#ffe8b9;border-radius:12px;padding:10px 13px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;min-height:40px}.quick-actions button:first-child{background:#f7c66e;color:#263027;border-color:#f7c66e}.quick-actions button[aria-pressed="true"]{background:#57482b;color:#ffe8b9;border-color:#e6bb60}.favorite-star{font-size:25px;color:#f7c66e;min-width:30px;align-self:center;cursor:pointer;text-align:center}.item{position:relative}.doc-reader{scroll-margin-top:8px}.viewer{scroll-margin-top:8px}#videoBreadcrumb{scroll-margin-top:12px}
 @media(max-width:650px){header .cherry-bomb{width:51px;height:56px;font-size:36px}.cherry-bomb span{font-size:7px;right:-2px}.quick-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.quick-actions button{padding:9px 7px;font-size:12px}.reader-actions button,.reader-actions a{font-size:12px;padding:8px}.item{min-height:70px}}
 </style>
@@ -83,7 +84,7 @@ header{position:relative}.cherry-bomb{margin-left:auto;flex:none;width:76px;heig
 <header>
 <img class="mine" src="./potato-mine.png" alt="植物大战僵尸土豆地雷">
 <div><h1>地雷放映室 <span style="color:var(--accent)">✦</span></h1><p>🥔 埋下知识，收获每一课 · 视频课程与学习资料</p></div>
-<div class="cherry-bomb" title="樱桃炸弹 · 快速回到课程" role="button" tabindex="0" aria-label="樱桃炸弹，返回视频课程">🍒<span>BOOM!</span></div></header>
+<div class="cherry-bomb" title="樱桃炸弹 · 快速回到课程" role="button" tabindex="0" aria-label="樱桃炸弹，返回视频课程"><img src="./1793148594547_612.webp" alt="樱桃炸弹"><span>BOOM!</span></div></header>
 <main class="shell"><nav class="tabs" aria-label="内容类型"><button class="tab active" id="videoTab" type="button">🎬 视频课程</button><button class="tab" id="pdfTab" type="button">📚 PDF 资料馆</button></nav><div id="videoSection">
 <div class="toolbar"><input id="search" type="search" placeholder="搜索课程名称、编号…" aria-label="搜索课程"><select id="category" aria-label="课程分类"><option value="all">全部课程</option></select><select id="order" aria-label="排序方式"><option value="asc">编号从小到大</option><option value="desc">编号从大到小</option><option value="new">最近上传</option></select></div>
 <div class="quick-actions"><button id="continueVideo" type="button">▶ 继续上次观看</button><button id="refreshVideos" type="button">↻ 刷新课程</button><button id="toggleFavorites" type="button" aria-pressed="false">☆ 我的收藏</button><button id="jumpList" type="button">☷ 课程目录</button></div><div id="count" class="count">正在读取视频列表…</div>
